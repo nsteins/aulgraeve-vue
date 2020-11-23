@@ -24,13 +24,14 @@
 </template>
 
 <script>
-require('dotenv').config()
+console.log(process.env.VUE_APP_AIRTABLE_API_KEY)
 
 import VueAirtable from './components/VueAirtable'
+
 export default {
   name: 'app',
   components: {
-    VueAirtable
+    VueAirtable,
   },
   data: function () {
     return {

@@ -12,8 +12,17 @@
         <v-card height="100%" 
             class="card-outer"
             raised tile >
+
+          <!-- <v-carousel hide-delimiters>
+            <v-carousel-item
+              v-for="(item,i) in record.fields['Photos']"
+              :key="i"
+              :src="item['thumbnails']['large']['url']"
+            ></v-carousel-item>
+          </v-carousel> -->
           <v-img
             :src="record.fields['Photos'][0]['thumbnails']['large']['url']"
+            class="image"
             aspect-ratio=1
             
           ></v-img>
@@ -40,6 +49,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   name: 'VueAirtable',
   props: [
@@ -51,7 +61,7 @@ export default {
   data: function () {
     return {
       apiUrl: 'https://api.airtable.com/v0/appdOgZCedimiinrq/',
-      apiKey: 'keyLnGRdk7Fnnn43o', // Always use a read-only account token
+      apiKey: process.env.VUE_APP_AIRTABLE_API_KEY, // Always use a read-only account token
       records: []
     };
   },
