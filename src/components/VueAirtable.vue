@@ -9,39 +9,10 @@
         md4
         sm6
       >
-        <v-card height="100%" 
-            class="card-outer"
-            raised tile >
-
-          <!-- <v-carousel hide-delimiters>
-            <v-carousel-item
-              v-for="(item,i) in record.fields['Photos']"
-              :key="i"
-              :src="item['thumbnails']['large']['url']"
-            ></v-carousel-item>
-          </v-carousel> -->
-          <v-img
-            :src="record.fields['Photos'][0]['thumbnails']['large']['url']"
-            class="image"
-            aspect-ratio=1
-            
-          ></v-img>
-
-          <v-card-text style="font-size:1rem;">{{record.fields['Description']}}</v-card-text>
-
-          <!-- <v-card-actions class='card-actions'>
-            <v-btn
-              class="pink mx-2"
-              fab
-              dark
-              small
-            >
-              <v-icon dark>
-                mdi-heart
-              </v-icon>
-            </v-btn>
-          </v-card-actions> -->
-        </v-card>
+        <gift-card
+          :record=record
+          >
+        </gift-card>
       </v-flex>
     </v-layout>
   </v-container>
@@ -49,9 +20,13 @@
 
 <script>
 import axios from 'axios';
+import GiftCard from './GiftCard'
 
 export default {
   name: 'VueAirtable',
+  components: {
+    GiftCard
+  },
   props: [
     'base',
     'columns',
@@ -62,7 +37,7 @@ export default {
     return {
       apiUrl: 'https://api.airtable.com/v0/appdOgZCedimiinrq/',
       apiKey: process.env.VUE_APP_AIRTABLE_API_KEY, // Always use a read-only account token
-      records: []
+      records: [],
     };
   },
   mounted: function () {
@@ -89,19 +64,10 @@ export default {
         }
       }).then((res) => {
         this.records = res.data.records;
+        this.overlay = new Array(this.records.length).fill(false);
       });
     }
   }
 }
 </script>
 
-<style>
-  .card-outer {
-  position: relative;
-  padding-bottom: 15px;
-  }
-  .card-actions {
-    position: absolute;
-    bottom: 0;
-  } 
-</style>

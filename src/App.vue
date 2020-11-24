@@ -31,7 +31,7 @@ import VueAirtable from './components/VueAirtable'
 export default {
   name: 'app',
   components: {
-    VueAirtable,
+    VueAirtable
   },
   data: function () {
     return {
