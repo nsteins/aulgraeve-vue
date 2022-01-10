@@ -10,7 +10,10 @@
 
         <v-col>
           <h1>Aul Graeve Gifts</h1>
-          <vue-airtable :base="base" :columns="['Photos', 'Description']" filter=""></vue-airtable>
+          <h2>2021</h2>
+          <vue-airtable :base="base_2021" :columns="['Photos', 'Description']" filter=""></vue-airtable>
+          <h2>2020</h2>
+          <vue-airtable :base="base_2020" :columns="['Photos', 'Description']" filter=""></vue-airtable>
         </v-col>
 
         <v-col
@@ -35,7 +38,8 @@ export default {
   },
   data: function () {
     return {
-      base: 'gift_pics'
+      base_2020: 'gift_pics',
+      base_2021: 'gift_pics_2021'
     };
   }
 }
