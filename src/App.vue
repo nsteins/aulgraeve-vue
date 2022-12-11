@@ -10,6 +10,8 @@
 
         <v-col>
           <h1>Aul Graeve Gifts</h1>
+          <h2>2022</h2>
+          <vue-airtable :base="base_2022" :columns="['Photos', 'Description']" filter=""></vue-airtable>
           <h2>2021</h2>
           <vue-airtable :base="base_2021" :columns="['Photos', 'Description']" filter=""></vue-airtable>
           <h2>2020</h2>
