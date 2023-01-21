@@ -41,7 +41,7 @@ export default {
   data: function () {
     return {
       base_2020: 'gift_pics',
-      base_2021: 'gift_pics_2021'.
+      base_2021: 'gift_pics_2021',
       base_2022: 'gift_pics_2022'
     };
   }
